@@ -3,17 +3,17 @@ import type { Metadata, Viewport } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'DevNodo — Comunidad de developers',
-  description: 'Comparte, aprende y encuentra oportunidades en la comunidad de developers de DevNodo.',
+  title: 'DevNodo — Comunidad de developers y oportunidades freelance',
+  description: 'La comunidad en español donde las conversaciones técnicas encuentran nuevas oportunidades.',
   generator: 'v0.app',
 }
 
 export const viewport: Viewport = {
-  colorScheme: 'light',
-  themeColor: '#08ae7c',
+  colorScheme: 'dark',
+  themeColor: '#0d1117',
   userScalable: false,
 }
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="es" className="bg-background"><body className="antialiased">{children}{process.env.NODE_ENV === 'production' && <Analytics />}</body></html>
+  return <html lang="es" className="dark bg-background"><body className="antialiased">{children}{process.env.NODE_ENV === 'production' && <Analytics />}</body></html>
 }
