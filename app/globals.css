@@ -52,7 +52,7 @@ button { cursor: pointer; }
 .detail-author .detail-meta > span { margin: 0; }
 .detail-author .follow-button { justify-self: end; white-space: nowrap; }
 .detail-tag-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
-.detail-tag-row span { display: inline-flex; align-items: center; padding: 6px 9px; border: 1px solid #30363d; border-radius: 5px; color: #6ee7b7; background: #123a32; font: 10px var(--font-mono); }
+.detail-tag-row span { display: inline-flex; align-items: center; padding: 6px 9px; border: 1px solid #30363d; border-radius: 5px; color: #6ee7b7; background: #123a32; font: 10px var(--font-mono); }.post-detail-card .stack-row span { display: inline-flex; align-items: center; padding: 6px 9px; border: 1px solid #30363d; border-radius: 5px; color: #c9d1d9; background: #212833; font: 10px var(--font-mono); }.post-detail-card .stack-row span:nth-child(1) { color: #7dd3fc; background: #102b3a; border-color: #24516a; }.post-detail-card .stack-row span:nth-child(2) { color: #61dafb; background: #102a32; border-color: #1f5963; }.post-detail-card .stack-row span:nth-child(3) { color: #f0c674; background: #332b17; border-color: #665528; }
 .create-page { min-height: 100vh; background: #0d1117; color: #e6edf3; display: flex; flex-direction: column; }
 .create-topbar { height: 64px; padding: 0 32px; display: flex; align-items: center; border-bottom: 1px solid #30363d; background: #0d1117; }
 .create-brand { display: inline-flex; align-items: center; gap: 10px; color: #e6edf3; font-weight: 800; text-decoration: none; }
