@@ -3,7 +3,7 @@ import type { Metadata, Viewport } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'DevNodo — Comunidad de developers y oportunidades freelance',
+  title: 'Avocado — Comunidad de developers y oportunidades freelance',
   description: 'La comunidad en español donde las conversaciones técnicas encuentran nuevas oportunidades.',
   generator: 'v0.app',
 }
