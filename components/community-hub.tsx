@@ -31,7 +31,7 @@ function LeftSidebar({ onPublish, activeTab, setActiveTab }: { onPublish: () => 
     <div className="sidebar-section">
       <p className="eyebrow">Comunidad</p>
       <nav className="nav-list" aria-label="Navegación principal">
-        {navItems.map(({ label, icon: Icon, count }) => { const target = label === 'Inicio' || label === 'Explorar' ? 'Tendencias' : label === 'Empleos' ? 'Vacantes & Freelance' : 'Showcase Projects'; return <button key={label} className={`nav-item ${activeTab === target ? 'active' : ''}`} onClick={() => setActiveTab(target)}><Icon size={17} /><span>{label}</span>{count && <span className="nav-count">{count}</span>}</button> })}
+        {navItems.map(({ label, icon: Icon, count }) => { const target = label === 'Inicio' ? 'Tendencias' : label === 'Explorar' ? 'Últimos Envíos' : label === 'Empleos' ? 'Vacantes & Freelance' : 'Showcase Projects'; return <button key={label} className={`nav-item ${activeTab === target ? 'active' : ''}`} onClick={() => setActiveTab(target)}><Icon size={17} /><span>{label}</span>{count && <span className="nav-count">{count}</span>}</button> })}
       </nav>
     </div>
     <div className="sidebar-section tags-section"><div className="section-heading"><p className="eyebrow">Tus temas</p><button className="icon-button" aria-label="Editar temas"><MoreHorizontal size={16} /></button></div>{tags.map(tag => <button key={tag} className="tag-link" onClick={() => setActiveTab(tag === 'empleos' ? 'Vacantes & Freelance' : tag === 'react' || tag === 'nextjs' ? 'Últimos Envíos' : 'Tendencias')}><Hash size={14} />{tag}</button>)}<button className="see-all">Ver todos los temas <ChevronDown size={14} /></button></div>
