@@ -43,8 +43,8 @@ function LeftSidebar({ onPublish, activeTab, setActiveTab }: { onPublish: () => 
 
 function PostCard({ post, onUnlock }: { post: typeof posts[number]; onUnlock: () => void }) {
   const router = useRouter(); const [voted, setVoted] = useState(false); const [saved, setSaved] = useState(false)
-  const openPost = (e?: React.MouseEvent<HTMLElement>) => { if (e?.target instanceof HTMLElement && e.target.closest('button')) return; router.push(`/post/${post.id}`) }
-  return <article className={`post-card ${post.type === 'job' ? 'job-card' : ''}`} onDoubleClick={openPost} onKeyDown={e => e.key === 'Enter' && openPost()} role="link" tabIndex={0}>
+  const openPost = (e?: React.MouseEvent<HTMLElement>) => { if (e?.target instanceof HTMLElement && e.target.closest('button, a, input, textarea, select')) return; router.push(`/post/${post.id}`) }
+  return <article className={`post-card ${post.type === 'job' ? 'job-card' : ''}`} onClick={openPost} onKeyDown={e => e.key === 'Enter' && openPost()} role="link" tabIndex={0}>
     {post.type === 'job' && <div className="job-line" />}
     <div className="post-top"><div className="author-row"><Avatar initials={post.initials} tone={post.color} /><div><div className="author-name">{post.author} {post.badge === 'Staff Avocado' && <ShieldCheck size={13} className="verified" />}</div><div className="post-meta">{post.badge} <span>·</span> {post.time} en <span className="meta-tag">#{post.tag}</span></div></div></div><button className="icon-button" aria-label="Más opciones"><MoreHorizontal size={18} /></button></div>
     <div className="post-type-label">{post.type === 'job' ? 'VACANTE / PROYECTO' : post.type === 'showcase' ? 'MOSTRAR PROYECTO' : 'POST NORMAL'}</div><h2>{post.title}</h2><p className="post-excerpt">{post.excerpt}</p>
