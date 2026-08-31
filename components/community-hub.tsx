@@ -1,6 +1,7 @@
 'use client'
 
 import { useMemo, useState } from 'react'
+import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import {
   Bell, Bookmark, BriefcaseBusiness, ChevronDown, Compass, Flame,
@@ -44,9 +45,9 @@ function LeftSidebar({ onPublish, activeTab, setActiveTab }: { onPublish: () => 
 function PostCard({ post, onUnlock }: { post: typeof posts[number]; onUnlock: () => void }) {
   const router = useRouter(); const [voted, setVoted] = useState(false); const [saved, setSaved] = useState(false)
   const openPost = (e?: React.MouseEvent<HTMLElement>) => { if (e?.target instanceof HTMLElement && e.target.closest('button, a, input, textarea, select')) return; router.push(`/post/${post.id}`) }
-  return <article className={`post-card ${post.type === 'job' ? 'job-card' : ''}`} onClick={openPost} onKeyDown={e => e.key === 'Enter' && openPost()} role="link" tabIndex={0}>
+  return <article className={`post-card ${post.type === 'job' ? 'job-card' : ''}`} onClick={openPost}>
     {post.type === 'job' && <div className="job-line" />}
-    <div className="post-top"><div className="author-row"><Avatar initials={post.initials} tone={post.color} /><div><div className="author-name">{post.author} {post.badge === 'Staff Avocado' && <ShieldCheck size={13} className="verified" />}</div><div className="post-meta">{post.badge} <span>·</span> {post.time}</div></div></div><button className="icon-button" aria-label="Más opciones"><MoreHorizontal size={18} /></button></div>
+    <div className="post-top"><Link className="author-row author-link" href={`/users/${post.author.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`} onClick={e => e.stopPropagation()}><Avatar initials={post.initials} tone={post.color} /><div><div className="author-name">{post.author} {post.badge === 'Staff Avocado' && <ShieldCheck size={13} className="verified" />}</div><div className="post-meta">{post.badge} <span>·</span> {post.time}</div></div></Link><button className="icon-button" aria-label="Más opciones"><MoreHorizontal size={18} /></button></div>
     <div className="post-type-label">{post.type === 'job' ? 'VACANTE / PROYECTO' : post.type === 'showcase' ? 'MOSTRAR PROYECTO' : 'POST NORMAL'}</div><h2>{post.title}</h2><p className="post-excerpt">{post.excerpt}</p>
     <div className="stack-row">{post.stack.map(item => <span className={`stack-badge stack-${item.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`} key={item}>{item}</span>)}</div>
     {post.type === 'job' && <div className="job-details"><div><span className="detail-label">Presupuesto</span><strong>{post.budget}</strong></div><div><span className="detail-label">Modalidad</span><strong>Remoto · Contrato</strong></div><button className="unlock-button" onClick={onUnlock}><LockKeyhole size={14} /> Ver contacto directo</button></div>}
